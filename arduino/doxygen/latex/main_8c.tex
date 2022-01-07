@@ -1,0 +1,105 @@
+\hypertarget{main_8c}{}\doxysection{main.\+c File Reference}
+\label{main_8c}\index{main.c@{main.c}}
+
+
+This is the main file of the arduino project.  
+
+
+{\ttfamily \#include \char`\"{}keypad.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}led.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}states.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}millis.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$avr/io.\+h$>$}\newline
+{\ttfamily \#include $<$util/atomic.\+h$>$}\newline
+{\ttfamily \#include $<$avr/interrupt.\+h$>$}\newline
+{\ttfamily \#include $<$util/delay.\+h$>$}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{main_8c_ab8146dc15aab3a74ab7263d5345832d0}{MS\+\_\+\+DELAY}}~3000
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{main_8c_a840291bc02cba5474a4cb46a9b9566fe}{main}} (void)
+\begin{DoxyCompactList}\small\item\em Main function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const unsigned long \mbox{\hyperlink{main_8c_a85f63e090e3753a883597a295913add3}{period}} = 50
+\begin{DoxyCompactList}\small\item\em used to make non-\/blocking delay \end{DoxyCompactList}\item 
+unsigned long \mbox{\hyperlink{main_8c_ab9e3c177bdea8569a037f8db337b4ca5}{kdelay}} =0
+\begin{DoxyCompactList}\small\item\em variable used in non-\/blocking delay \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This is the main file of the arduino project. 
+
+\begin{DoxyAuthor}{Author}
+Markus Reinhold 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+1 Jan 2021
+\end{DoxyDate}
+This file set up the keypad-\/pin and led-\/pin and controll the state machine 
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{main_8c_ab8146dc15aab3a74ab7263d5345832d0}\label{main_8c_ab8146dc15aab3a74ab7263d5345832d0}} 
+\index{main.c@{main.c}!MS\_DELAY@{MS\_DELAY}}
+\index{MS\_DELAY@{MS\_DELAY}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{MS\_DELAY}{MS\_DELAY}}
+{\footnotesize\ttfamily \#define MS\+\_\+\+DELAY~3000}
+
+
+
+Definition at line 29 of file main.\+c.
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{main_8c_a840291bc02cba5474a4cb46a9b9566fe}\label{main_8c_a840291bc02cba5474a4cb46a9b9566fe}} 
+\index{main.c@{main.c}!main@{main}}
+\index{main@{main}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Main function. 
+
+Here is the programme entry point where the setup and the state machine stats 
+
+Definition at line 41 of file main.\+c.
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{main_8c_ab9e3c177bdea8569a037f8db337b4ca5}\label{main_8c_ab9e3c177bdea8569a037f8db337b4ca5}} 
+\index{main.c@{main.c}!kdelay@{kdelay}}
+\index{kdelay@{kdelay}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{kdelay}{kdelay}}
+{\footnotesize\ttfamily unsigned long kdelay =0}
+
+
+
+variable used in non-\/blocking delay 
+
+
+
+Definition at line 34 of file main.\+c.
+
+\mbox{\Hypertarget{main_8c_a85f63e090e3753a883597a295913add3}\label{main_8c_a85f63e090e3753a883597a295913add3}} 
+\index{main.c@{main.c}!period@{period}}
+\index{period@{period}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{period}{period}}
+{\footnotesize\ttfamily const unsigned long period = 50}
+
+
+
+used to make non-\/blocking delay 
+
+
+
+Definition at line 32 of file main.\+c.
+

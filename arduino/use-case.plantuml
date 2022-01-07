@@ -1,0 +1,30 @@
+/' see http://www.plantuml.com/plantuml/uml/VP31IWGn38RFCq-Henvc7s0Fou8d4KGG7o2qSQPCcvHkUbZ4TzSMHbg47d_o__-Nv7fJJ9g3dprzAgX0SkkcO5qYeqvudkRfjZkEc310HBFZIkzwzmJ5WRnwAXuqAWaeH2zteaEZ3QvM_7d1YgH58Z6bhtcQ7Z3hHgpEOC6TmMnaTdXxVdqSJ3zU1jCd2G7P_ZgAfw0gj2RCXhmIHCTLPlPYzcFyNHB72R0i5-ZIZO3J1GQRmnaS6vzjVKrzGgthyQs2Kmlh2lxPXbStKUZG_QcTBAs3JpVBN8bj3lu7
+'/
+
+@startuml
+left to right direction
+	
+	skinparam packageStyle rectangle
+	
+	actor employee
+	actor admin
+	
+	rectangle door-opener{
+		(authentication: check PIN)
+		(authentication: check PUK)
+		(authentication: check Command)
+	
+		(open door)
+		(change pin)
+		(unlock door)
+	}
+	
+	employee --> (open door)
+	(open door) .> (authentication: check PIN) : include
+	
+	admin --> (change pin)
+	(change pin) .> (open door) : include
+	(change pin) .> (authentication: check Command) : include 
+	admin --> (unlock door)
+	(unlock door) .> (authentication: check PUK) : include
+@enduml

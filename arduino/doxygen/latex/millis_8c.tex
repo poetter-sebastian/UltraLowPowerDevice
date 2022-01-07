@@ -1,0 +1,94 @@
+\hypertarget{millis_8c}{}\doxysection{millis.\+c File Reference}
+\label{millis_8c}\index{millis.c@{millis.c}}
+
+
+Functions for the delay for the key press detection.  
+
+
+{\ttfamily \#include $<$avr/io.\+h$>$}\newline
+{\ttfamily \#include $<$util/atomic.\+h$>$}\newline
+{\ttfamily \#include $<$avr/interrupt.\+h$>$}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{millis_8c_ad39420cdd896dd12c68e36313139d0a5}{ISR}} (TIMER1\+\_\+\+COMPA\+\_\+vect)
+\item 
+void \mbox{\hyperlink{millis_8c_ae28fbabb94131fc3a7d1cf87ee6ec8b0}{init\+\_\+millis}} (unsigned long f\+\_\+cpu)
+\begin{DoxyCompactList}\small\item\em Initiates the millis for use. \end{DoxyCompactList}\item 
+unsigned long \mbox{\hyperlink{millis_8c_a6ff7f2532a22366f0013bc41397129fd}{millis}} ()
+\begin{DoxyCompactList}\small\item\em Used to get millis time. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+volatile unsigned long \mbox{\hyperlink{millis_8c_a2e14924e6cd839ec067b3f8c08fd73a6}{timer1\+\_\+millis}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Functions for the delay for the key press detection. 
+
+\begin{DoxyAuthor}{Author}
+Markus Reinhold 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+1 Jan 2021 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{millis_8c_ae28fbabb94131fc3a7d1cf87ee6ec8b0}\label{millis_8c_ae28fbabb94131fc3a7d1cf87ee6ec8b0}} 
+\index{millis.c@{millis.c}!init\_millis@{init\_millis}}
+\index{init\_millis@{init\_millis}!millis.c@{millis.c}}
+\doxysubsubsection{\texorpdfstring{init\_millis()}{init\_millis()}}
+{\footnotesize\ttfamily void init\+\_\+millis (\begin{DoxyParamCaption}\item[{unsigned long}]{f\+\_\+cpu }\end{DoxyParamCaption})}
+
+
+
+Initiates the millis for use. 
+
+Sets Timer Counter Register and Output Compare Register 
+
+Definition at line 35 of file millis.\+c.
+
+\mbox{\Hypertarget{millis_8c_ad39420cdd896dd12c68e36313139d0a5}\label{millis_8c_ad39420cdd896dd12c68e36313139d0a5}} 
+\index{millis.c@{millis.c}!ISR@{ISR}}
+\index{ISR@{ISR}!millis.c@{millis.c}}
+\doxysubsubsection{\texorpdfstring{ISR()}{ISR()}}
+{\footnotesize\ttfamily ISR (\begin{DoxyParamCaption}\item[{TIMER1\+\_\+\+COMPA\+\_\+vect}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 24 of file millis.\+c.
+
+\mbox{\Hypertarget{millis_8c_a6ff7f2532a22366f0013bc41397129fd}\label{millis_8c_a6ff7f2532a22366f0013bc41397129fd}} 
+\index{millis.c@{millis.c}!millis@{millis}}
+\index{millis@{millis}!millis.c@{millis.c}}
+\doxysubsubsection{\texorpdfstring{millis()}{millis()}}
+{\footnotesize\ttfamily unsigned long millis (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Used to get millis time. 
+
+returns the milliseconds elapsed since the program was started
+
+\begin{DoxyReturn}{Returns}
+millis time 
+\end{DoxyReturn}
+
+
+Definition at line 58 of file millis.\+c.
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{millis_8c_a2e14924e6cd839ec067b3f8c08fd73a6}\label{millis_8c_a2e14924e6cd839ec067b3f8c08fd73a6}} 
+\index{millis.c@{millis.c}!timer1\_millis@{timer1\_millis}}
+\index{timer1\_millis@{timer1\_millis}!millis.c@{millis.c}}
+\doxysubsubsection{\texorpdfstring{timer1\_millis}{timer1\_millis}}
+{\footnotesize\ttfamily volatile unsigned long timer1\+\_\+millis}
+
+
+
+Definition at line 21 of file millis.\+c.
+

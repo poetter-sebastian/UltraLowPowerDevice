@@ -1,0 +1,63 @@
+\hypertarget{keypad_8h}{}\doxysection{keypad.\+h File Reference}
+\label{keypad_8h}\index{keypad.h@{keypad.h}}
+
+
+Header file for \mbox{\hyperlink{keypad_8c}{keypad.\+c}}.  
+
+
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+char \mbox{\hyperlink{keypad_8h_a34de776de4177d4b74e62e5b39da30c2}{keypad}} (void)
+\begin{DoxyCompactList}\small\item\em reads the pressed key and returns pressed value \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{keypad_8h_a046e45817268585f4dc68bd8e2a988ac}{setup\+\_\+keypad}} (void)
+\begin{DoxyCompactList}\small\item\em Initiates the kepad for use. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Header file for \mbox{\hyperlink{keypad_8c}{keypad.\+c}}. 
+
+\begin{DoxyAuthor}{Author}
+Sebastian Pötter 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+1 Jan 2021
+\end{DoxyDate}
+This file controlles the keyinput and return of the pressed key 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{keypad_8h_a34de776de4177d4b74e62e5b39da30c2}\label{keypad_8h_a34de776de4177d4b74e62e5b39da30c2}} 
+\index{keypad.h@{keypad.h}!keypad@{keypad}}
+\index{keypad@{keypad}!keypad.h@{keypad.h}}
+\doxysubsubsection{\texorpdfstring{keypad()}{keypad()}}
+{\footnotesize\ttfamily char keypad (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+reads the pressed key and returns pressed value 
+
+test if a button is pressed then test which button it is. If colomn Pin changed to Low button is pressed. By setting one row after another to High check if the Low Pin changes to High.
+
+\begin{DoxyReturn}{Returns}
+Char of the pressed button 
+\end{DoxyReturn}
+
+
+Definition at line 78 of file keypad.\+c.
+
+\mbox{\Hypertarget{keypad_8h_a046e45817268585f4dc68bd8e2a988ac}\label{keypad_8h_a046e45817268585f4dc68bd8e2a988ac}} 
+\index{keypad.h@{keypad.h}!setup\_keypad@{setup\_keypad}}
+\index{setup\_keypad@{setup\_keypad}!keypad.h@{keypad.h}}
+\doxysubsubsection{\texorpdfstring{setup\_keypad()}{setup\_keypad()}}
+{\footnotesize\ttfamily void setup\+\_\+keypad (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Initiates the kepad for use. 
+
+Set poin modes for the kepad, rows as Output, colomns as Input and all set to High Set Port 2,3,4,5 as Outpt
+
+Set Port 6,7,8,9 as Input and High
+
+Definition at line 48 of file keypad.\+c.
+

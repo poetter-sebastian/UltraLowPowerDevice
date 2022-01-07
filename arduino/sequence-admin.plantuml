@@ -1,0 +1,43 @@
+/' see 
+http://www.plantuml.com/plantuml/uml/hLFDRi8m33utJs7rmWbnvu1WjudzSDa3H8qfKTkuSjmXtdw6jNIW33Q9IzJOtq_wnPbD82A2CPEPCSiebgLhQXCh7rhBjW76s5A8-8ensXAViARzYfds8DoXCPajX1ZobMjyo7LVCdKjl12r9ilwCamNaA_nq5gNpy762jH9K07Azf_wUMuVQxL05segAdIwpOOMJAUBmMWEZDRveASw7r6nQKFzbquY5DGqDgZaoKAtp5W8vCNEXXAXmaC-OdxrxT6RvxSVndUSjvwZWFEb5w3jaNl3u7rzLozYGS4zK51sdX-fjwMEPVTVmMHJgNtcxY9mh2EgtN2BzozkpnJA0NSffRnUS9Ywz6IcbNlId-Tmyx6-ca4jNKSmyc0E4UNxnO3G-3HkpEWecyeiuPeGkS2byZgj3XD17LjBNRgc_W80
+'/
+
+@startuml
+skinparam responseMessageBelowArrow true
+
+	actor "Admin"
+
+	group Loop
+		"Admin" -> "Keypad": ask state
+		activate "Keypad"
+		alt unlocked
+			"Keypad" --> "Admin": readiness response
+			"Admin" -> "Keypad": inputs command
+			alt correct "change key" command
+				"Keypad" --> "Admin": change PIN response
+				"Admin" -> "Keypad": inputs first digit of PIN
+				"Keypad" --> "Admin": OK
+				"Admin" -> "Keypad": inputs second digit of PIN
+				"Keypad" --> "Admin": OK
+				"Admin" -> "Keypad": inputs third digit of PIN
+				"Keypad" --> "Admin": OK
+				"Admin" -> "Keypad": inputs fourth digit of PIN
+				"Keypad" --> "Admin": OK
+				"Keypad" --> "Admin": PIN changed response
+			else incorrect command
+				"Keypad" --> "Admin": wrong command response
+			end
+		else locked
+			activate "Keypad"
+			"Keypad" --> "Admin": locked response
+			"Admin" -> "Keypad": inputs PUK
+			alt correct PUK
+				"Keypad" -> "Keypad" : set state to unlocked
+				"Keypad" --> "Admin": correct PUK response
+			else incorrect PUK
+				"Keypad" --> "Admin": incorrect PUK response
+			end
+		end
+		deactivate "Keypad"
+	end
+@enduml

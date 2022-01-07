@@ -1,0 +1,68 @@
+\hypertarget{led_8h}{}\doxysection{led.\+h File Reference}
+\label{led_8h}\index{led.h@{led.h}}
+
+
+Header file for \mbox{\hyperlink{led_8c}{led.\+c}}.  
+
+
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{led_8h_a39a301738efad4855d63f06ce3fc7940}{set\+LED}} (bool red\+Value, bool green\+Value, bool blue\+Value)
+\begin{DoxyCompactList}\small\item\em Aktivates LED colors depending on paramters. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{led_8h_a93eeecb8d43771bba99bc6d8ee53bd8b}{setup\+\_\+\+LED}} (void)
+\begin{DoxyCompactList}\small\item\em Initiates the LED for use. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Header file for \mbox{\hyperlink{led_8c}{led.\+c}}. 
+
+\begin{DoxyAuthor}{Author}
+Markus Reinhold 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+1 Jan 2021 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{led_8h_a39a301738efad4855d63f06ce3fc7940}\label{led_8h_a39a301738efad4855d63f06ce3fc7940}} 
+\index{led.h@{led.h}!setLED@{setLED}}
+\index{setLED@{setLED}!led.h@{led.h}}
+\doxysubsubsection{\texorpdfstring{setLED()}{setLED()}}
+{\footnotesize\ttfamily void set\+LED (\begin{DoxyParamCaption}\item[{bool}]{red\+Value,  }\item[{bool}]{green\+Value,  }\item[{bool}]{blue\+Value }\end{DoxyParamCaption})}
+
+
+
+Aktivates LED colors depending on paramters. 
+
+Set pin modes for the red, green and blue in the LED and init with all on. Aktivate LED\textquotesingle{}s depending on the Parameters.
+
+
+\begin{DoxyParams}{Parameters}
+{\em red\+Value} & bool paramter, if true the red LED will be turned on \\
+\hline
+{\em green\+Value} & bool paramter, if true the green LED will be turned on \\
+\hline
+{\em blue\+Value} & bool paramter, if true the blue LED will be turned on \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 45 of file led.\+c.
+
+\mbox{\Hypertarget{led_8h_a93eeecb8d43771bba99bc6d8ee53bd8b}\label{led_8h_a93eeecb8d43771bba99bc6d8ee53bd8b}} 
+\index{led.h@{led.h}!setup\_LED@{setup\_LED}}
+\index{setup\_LED@{setup\_LED}!led.h@{led.h}}
+\doxysubsubsection{\texorpdfstring{setup\_LED()}{setup\_LED()}}
+{\footnotesize\ttfamily void setup\+\_\+\+LED (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Initiates the LED for use. 
+
+Set pin modes for the red, green and blue in the LED and init with all on 
+
+Definition at line 22 of file led.\+c.
+

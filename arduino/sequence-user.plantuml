@@ -1,0 +1,44 @@
+/' see 
+http://www.plantuml.com/plantuml/uml/dLFBRjmm33nBNy7i9QSWbvwCDaWVFRNz2C5cl8PbqI2fBlRlAy5UHJ24B50Vh8U6mvaHzFm8WWWMxEEpjQ-YZZKktieyXTMnMu1HLWg2Vr34ZVWDFLs-CjC5b2DQQroln73wkQoUheYdj3KonHL-4wtM6ESLOl3KppYafNb7mjCBd7xXTNN3gOFKCAh0ZDUCIgpJNwTO0DPiL3qnOwytdBcTmrDcAznT3Imc3XMfu0SH9_0c4FICCAGTQse96sYhpTFSgrQUAuh53qKre84KWQVnh41lTOmcVxWluUByB4aVKnpFMMTXUHUCOO14rt1vctVWtXGPX1O4dPO4RMRTZYcLvvPIEhRYWDraPN70TeS16n6Zb-IMAOnthxZ03XVil08o4t-d6BBTp_39cfhfg7WAFQCJhClsJFrX5rw-5BQsBkYAd3q5a6aCpd-iGL11D8UXLAU78O_RiCcvzvRWuG4Ex-b_j6uTcvUNZrxJBox-7m00
+'/
+
+@startuml
+skinparam responseMessageBelowArrow true
+
+	actor "Employee"
+
+	group Loop
+		alt unlocked
+			"Employee" -> "Keypad": inputs key
+			activate "Keypad"
+			alt correct key
+				"Keypad" --> "Employee": correct key response
+				"Keypad" -> "Door": unlock the door
+				activate "Door"
+				"Door" --> "Keypad": door unlocked
+				"Keypad" --> "Employee": door unlocked
+				note right of "Employee"
+					employee walks through the unlocked door
+				end note
+				"Keypad" -> "Keypad" : after some time
+				activate "Keypad"
+				"Keypad" -> "Door" : locks door
+				"Door" --> "Keypad" : door locked
+				deactivate "Keypad"
+				deactivate "Door"
+			else wrong key
+				"Keypad" --> "Employee": wrong key response
+				alt errorCounter < 4
+					"Keypad" --> "Keypad" : increase errorCounter
+				else errorCounter >= 4
+					"Keypad" --> "Employee" : response locked signal
+					"Keypad" --> "Keypad" : set state to locked
+				end
+			end
+		else locked
+			"Employee" -> "Keypad" !! : inputs key
+			"Keypad" --> "Employee" : response locked signal
+		end
+		deactivate "Keypad"
+	end
+@enduml

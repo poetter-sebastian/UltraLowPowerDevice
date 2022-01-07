@@ -1,0 +1,160 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+% Deutsch: https://de.overleaf.com/learn/German
+% "`	Left double quotes
+% "'	Right double quotes
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+\usepackage{csquotes}
+
+\usepackage{xcolor}
+\usepackage{listings}
+
+\definecolor{mGreen}{rgb}{0,0.6,0}
+\definecolor{mGray}{rgb}{0.5,0.5,0.5}
+\definecolor{mPurple}{rgb}{0.58,0,0.82}
+\definecolor{backgroundColour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{CStyle-numbers}{
+    backgroundcolor=\color{backgroundColour},   
+    commentstyle=\color{mGreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{mGray},
+    stringstyle=\color{mPurple},
+    basicstyle=\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2,
+    language=C
+}
+
+\lstdefinestyle{CStyle}{
+    backgroundcolor=\color{backgroundColour},   
+    commentstyle=\color{mGreen},
+    keywordstyle=\color{magenta},
+    stringstyle=\color{mPurple},
+    basicstyle=\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                         
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2,
+    language=C
+}
+
+\usepackage{tikz}
+\usetikzlibrary{positioning,automata}
+
+\usepackage[acronym,nonumberlist]{glossaries}
+\usepackage{acronym}
+
+% documentation: https://ctan.kako-dev.de/macros/latex/contrib/biblatex/doc/biblatex.pdf
+\usepackage[backend=biber,style=numeric,sorting=ynt]{biblatex}
+\addbibresource{references.bib}
+
+% um Grafiken einzubinden, {Angabe des Pfades der Bilder}
+\usepackage{float}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+% Nützliches Online Tool zur Tabellengenerierung: TablesGenerator.com 
+
+% zur korreten Platzierung der Bilder im Titelblatt
+\usepackage{chngpage}
+\usepackage{calc}
+\usepackage{geometry}
+
+% Automatisches Generieren von Hyperlinks bei Verweisen (ref / cite)
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks   = true,    % Colours links instead of ugly boxes
+  urlcolor     = blue,    % Colour for external hyperlinks
+  linkcolor    = black,    % Colour of internal links
+  citecolor    = red      % Colour of citations
+}
+
+% Infos über Dokument
+\title{Arduino Projekt}
+\author{Sebastian Pötter}
+\date{\today}
+
+\begin{document}
+
+    \input{titlepage}
+    \newpage
+    
+    \pagenumbering{roman}
+
+    \tableofcontents
+    \newpage
+    
+    \addcontentsline{toc}{section}{Abkürzungsverzeichnis}  
+    \section*{Abkürzungsverzeichnis}
+        \begin{acronym}
+            \acro {GPIO} {General Purpose Input/Output}
+            \acro {IDE} {Integrated Development Environment}
+            \acro {LED} {Light Emitting Diode}
+            \acro {MCU} {Microcontroller Unit}
+            \acro {PIN} {Personal Identification Number}
+            \acro {PUK} {Personal Unblocking Key} 
+            \acro {RGB} {Red, Green, Blue}
+            \acro {USB} {Universal Serial Bus}
+        \end{acronym}
+        
+    \addcontentsline{toc}{section}{Glossar}  
+    \section*{Glossar}
+        \textbf{Algorithmus} : Feste Vorgehensweise um ein spezifisches Problem zu lösen 
+        \newline
+        \textbf{AT-Mega} : Ein Ein-Chip-Mikrocontroller der Firma Atmel aus der megaAVR-Familie.
+        \newline
+        \textbf{AVRDUDE} : Programmiersoftware für Atmel AVR Controller.
+        \newline
+        \textbf{GCC-AVR} : AVR-GCC ist ein freier C-Cross-Compiler für AVR-Mikrocontroller \cite{online:avr}. 
+        \newline
+        
+    
+    \newpage
+    \pagenumbering{arabic}
+
+     \section{Aufgabenstellung}
+        \input{sections/problem}       
+        
+    \section{Hardware und Konzept} 
+        \input{sections/hardware}        
+
+    \section{Einrichtung der Entwicklungsumgebung}
+        \input{sections/setup}
+
+    \section{Implementierung und Umsetzung}
+        \input{sections/implementation}
+    
+    \section{Bedienungsanleitung}
+        \input{sections/manual}
+    
+    \section{Fazit}
+        \input{sections/fazit}
+    
+    \newpage
+    
+    \pagenumbering{Roman}
+    \appendix
+    
+    \section*{Literaturverzeichnis}
+    \addcontentsline{toc}{section}{\protect\numberline{}Literaturverzeichnis}%
+        \printbibliography
+    
+    \newpage
+    
+    \addcontentsline{toc}{section}{\protect\numberline{}Abbildungsverzeichnis}%
+        \listoffigures
+
+\end{document}

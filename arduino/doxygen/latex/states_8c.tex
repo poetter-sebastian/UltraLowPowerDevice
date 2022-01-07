@@ -1,0 +1,247 @@
+\hypertarget{states_8c}{}\doxysection{states.\+c File Reference}
+\label{states_8c}\index{states.c@{states.c}}
+
+
+Controlls the state machine of the lock.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$util/delay.\+h$>$}\newline
+{\ttfamily \#include $<$avr/io.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}states.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}led.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}keypad.\+h\char`\"{}}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{states_8c_ab5889105dcd019008c9448dff61323f6}{INIT}}~0
+\item 
+\#define \mbox{\hyperlink{states_8c_a8ae9d53f33f46cfcfcb9736e6351452a}{KEY}}~1
+\item 
+\#define \mbox{\hyperlink{states_8c_a1354b70ac6803a06beebe84f61b5f95b}{OPEN}}~2
+\item 
+\#define \mbox{\hyperlink{states_8c_a24ad8e8d287dfba3180c24d8e33b7419}{CHANGEKEY}}~3
+\item 
+\#define \mbox{\hyperlink{states_8c_a134a6b8690ed6c1e2c3b678092325832}{NEWKEY}}~4
+\item 
+\#define \mbox{\hyperlink{states_8c_a00de8f7e0b615f88335573ba3909583d}{LOCKED}}~5
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{states_8c_adb5ae57cca8517120995fdcd27751a67}{stateM}} (void)
+\begin{DoxyCompactList}\small\item\em States of lock funktionality. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{states_8c_a11614f44ef4d939bdd984953346a7572}{error}} = 0
+\begin{DoxyCompactList}\small\item\em after 4 wrong keys =$>$ locked \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{states_8c_a89f234133d3efe315836311cbf21c64b}{state}} = \mbox{\hyperlink{states_8c_ab5889105dcd019008c9448dff61323f6}{INIT}}
+\item 
+int \mbox{\hyperlink{states_8c_ab225cc38c44a4bb8ed66f7819e25fbbc}{state\+Old}} = \mbox{\hyperlink{states_8c_ab5889105dcd019008c9448dff61323f6}{INIT}}
+\item 
+int \mbox{\hyperlink{states_8c_a1910d262855b71da353ed0d07a6c7823}{pos}} = 0
+\begin{DoxyCompactList}\small\item\em current position of key \end{DoxyCompactList}\item 
+char \mbox{\hyperlink{states_8c_a0c0c8707f7697f27c42d5bd839af2a81}{pin}} \mbox{[}4\mbox{]} = \char`\"{}$\ast$$\ast$$\ast$$\ast$\char`\"{}
+\begin{DoxyCompactList}\small\item\em init pin \end{DoxyCompactList}\item 
+char \mbox{\hyperlink{states_8c_a4c76e581f509b9083150640ead43fb2e}{puck}} \mbox{[}6\mbox{]} = \char`\"{}\#12345\char`\"{}
+\begin{DoxyCompactList}\small\item\em init puk \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{states_8c_a493b57f443cc38b3d3df9c1e584d9d82}{timeout}} = 0
+\item 
+int \mbox{\hyperlink{states_8c_a15281eb1ee03840f0c5dceef9a99da38}{open\+Timeout}} = 250
+\begin{DoxyCompactList}\small\item\em time out for open state \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Controlls the state machine of the lock. 
+
+\begin{DoxyAuthor}{Author}
+Lukas Brüggemann 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+1 Jan 2021
+\end{DoxyDate}
+This file contains the state machine of the lock 
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{states_8c_a24ad8e8d287dfba3180c24d8e33b7419}\label{states_8c_a24ad8e8d287dfba3180c24d8e33b7419}} 
+\index{states.c@{states.c}!CHANGEKEY@{CHANGEKEY}}
+\index{CHANGEKEY@{CHANGEKEY}!states.c@{states.c}}
+\doxysubsubsection{\texorpdfstring{CHANGEKEY}{CHANGEKEY}}
+{\footnotesize\ttfamily \#define CHANGEKEY~3}
+
+
+
+Definition at line 25 of file states.\+c.
+
+\mbox{\Hypertarget{states_8c_ab5889105dcd019008c9448dff61323f6}\label{states_8c_ab5889105dcd019008c9448dff61323f6}} 
+\index{states.c@{states.c}!INIT@{INIT}}
+\index{INIT@{INIT}!states.c@{states.c}}
+\doxysubsubsection{\texorpdfstring{INIT}{INIT}}
+{\footnotesize\ttfamily \#define INIT~0}
+
+
+
+Definition at line 22 of file states.\+c.
+
+\mbox{\Hypertarget{states_8c_a8ae9d53f33f46cfcfcb9736e6351452a}\label{states_8c_a8ae9d53f33f46cfcfcb9736e6351452a}} 
+\index{states.c@{states.c}!KEY@{KEY}}
+\index{KEY@{KEY}!states.c@{states.c}}
+\doxysubsubsection{\texorpdfstring{KEY}{KEY}}
+{\footnotesize\ttfamily \#define KEY~1}
+
+
+
+Definition at line 23 of file states.\+c.
+
+\mbox{\Hypertarget{states_8c_a00de8f7e0b615f88335573ba3909583d}\label{states_8c_a00de8f7e0b615f88335573ba3909583d}} 
+\index{states.c@{states.c}!LOCKED@{LOCKED}}
+\index{LOCKED@{LOCKED}!states.c@{states.c}}
+\doxysubsubsection{\texorpdfstring{LOCKED}{LOCKED}}
+{\footnotesize\ttfamily \#define LOCKED~5}
+
+
+
+Definition at line 27 of file states.\+c.
+
+\mbox{\Hypertarget{states_8c_a134a6b8690ed6c1e2c3b678092325832}\label{states_8c_a134a6b8690ed6c1e2c3b678092325832}} 
+\index{states.c@{states.c}!NEWKEY@{NEWKEY}}
+\index{NEWKEY@{NEWKEY}!states.c@{states.c}}
+\doxysubsubsection{\texorpdfstring{NEWKEY}{NEWKEY}}
+{\footnotesize\ttfamily \#define NEWKEY~4}
+
+
+
+Definition at line 26 of file states.\+c.
+
+\mbox{\Hypertarget{states_8c_a1354b70ac6803a06beebe84f61b5f95b}\label{states_8c_a1354b70ac6803a06beebe84f61b5f95b}} 
+\index{states.c@{states.c}!OPEN@{OPEN}}
+\index{OPEN@{OPEN}!states.c@{states.c}}
+\doxysubsubsection{\texorpdfstring{OPEN}{OPEN}}
+{\footnotesize\ttfamily \#define OPEN~2}
+
+
+
+Definition at line 24 of file states.\+c.
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{states_8c_adb5ae57cca8517120995fdcd27751a67}\label{states_8c_adb5ae57cca8517120995fdcd27751a67}} 
+\index{states.c@{states.c}!stateM@{stateM}}
+\index{stateM@{stateM}!states.c@{states.c}}
+\doxysubsubsection{\texorpdfstring{stateM()}{stateM()}}
+{\footnotesize\ttfamily void stateM (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+States of lock funktionality. 
+
+Reads pressed button and depending on current state and pressed button to handle locks. Depending on state of the lock the indicator LED is set. 
+
+Definition at line 67 of file states.\+c.
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{states_8c_a11614f44ef4d939bdd984953346a7572}\label{states_8c_a11614f44ef4d939bdd984953346a7572}} 
+\index{states.c@{states.c}!error@{error}}
+\index{error@{error}!states.c@{states.c}}
+\doxysubsubsection{\texorpdfstring{error}{error}}
+{\footnotesize\ttfamily int error = 0}
+
+
+
+after 4 wrong keys =$>$ locked 
+
+
+
+Definition at line 31 of file states.\+c.
+
+\mbox{\Hypertarget{states_8c_a15281eb1ee03840f0c5dceef9a99da38}\label{states_8c_a15281eb1ee03840f0c5dceef9a99da38}} 
+\index{states.c@{states.c}!openTimeout@{openTimeout}}
+\index{openTimeout@{openTimeout}!states.c@{states.c}}
+\doxysubsubsection{\texorpdfstring{openTimeout}{openTimeout}}
+{\footnotesize\ttfamily int open\+Timeout = 250}
+
+
+
+time out for open state 
+
+
+
+Definition at line 42 of file states.\+c.
+
+\mbox{\Hypertarget{states_8c_a0c0c8707f7697f27c42d5bd839af2a81}\label{states_8c_a0c0c8707f7697f27c42d5bd839af2a81}} 
+\index{states.c@{states.c}!pin@{pin}}
+\index{pin@{pin}!states.c@{states.c}}
+\doxysubsubsection{\texorpdfstring{pin}{pin}}
+{\footnotesize\ttfamily char pin\mbox{[}4\mbox{]} = \char`\"{}$\ast$$\ast$$\ast$$\ast$\char`\"{}}
+
+
+
+init pin 
+
+
+
+Definition at line 37 of file states.\+c.
+
+\mbox{\Hypertarget{states_8c_a1910d262855b71da353ed0d07a6c7823}\label{states_8c_a1910d262855b71da353ed0d07a6c7823}} 
+\index{states.c@{states.c}!pos@{pos}}
+\index{pos@{pos}!states.c@{states.c}}
+\doxysubsubsection{\texorpdfstring{pos}{pos}}
+{\footnotesize\ttfamily int pos = 0}
+
+
+
+current position of key 
+
+
+
+Definition at line 35 of file states.\+c.
+
+\mbox{\Hypertarget{states_8c_a4c76e581f509b9083150640ead43fb2e}\label{states_8c_a4c76e581f509b9083150640ead43fb2e}} 
+\index{states.c@{states.c}!puck@{puck}}
+\index{puck@{puck}!states.c@{states.c}}
+\doxysubsubsection{\texorpdfstring{puck}{puck}}
+{\footnotesize\ttfamily char puck\mbox{[}6\mbox{]} = \char`\"{}\#12345\char`\"{}}
+
+
+
+init puk 
+
+
+
+Definition at line 39 of file states.\+c.
+
+\mbox{\Hypertarget{states_8c_a89f234133d3efe315836311cbf21c64b}\label{states_8c_a89f234133d3efe315836311cbf21c64b}} 
+\index{states.c@{states.c}!state@{state}}
+\index{state@{state}!states.c@{states.c}}
+\doxysubsubsection{\texorpdfstring{state}{state}}
+{\footnotesize\ttfamily int state = \mbox{\hyperlink{states_8c_ab5889105dcd019008c9448dff61323f6}{INIT}}}
+
+
+
+Definition at line 32 of file states.\+c.
+
+\mbox{\Hypertarget{states_8c_ab225cc38c44a4bb8ed66f7819e25fbbc}\label{states_8c_ab225cc38c44a4bb8ed66f7819e25fbbc}} 
+\index{states.c@{states.c}!stateOld@{stateOld}}
+\index{stateOld@{stateOld}!states.c@{states.c}}
+\doxysubsubsection{\texorpdfstring{stateOld}{stateOld}}
+{\footnotesize\ttfamily int state\+Old = \mbox{\hyperlink{states_8c_ab5889105dcd019008c9448dff61323f6}{INIT}}}
+
+
+
+Definition at line 33 of file states.\+c.
+
+\mbox{\Hypertarget{states_8c_a493b57f443cc38b3d3df9c1e584d9d82}\label{states_8c_a493b57f443cc38b3d3df9c1e584d9d82}} 
+\index{states.c@{states.c}!timeout@{timeout}}
+\index{timeout@{timeout}!states.c@{states.c}}
+\doxysubsubsection{\texorpdfstring{timeout}{timeout}}
+{\footnotesize\ttfamily int timeout = 0}
+
+
+
+Definition at line 40 of file states.\+c.
+

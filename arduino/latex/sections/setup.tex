@@ -1,0 +1,20 @@
+Um das Programm auf den Mikrocontroller zu übertragen müssen folgende Bibliotheken installiert werden: 
+
+\begin{itemize}
+    \item binutils : um Werkzeuge wie Assembler, Linker zu bekommen
+    \item gcc-avr : ein GNU C Cross-Compiler für speziell für AVR
+    \item avr-libc: es ist ein Paket für AVR C Bibliotheken
+    \item AVRDUDE : Anwendung zum programmieren des Mikrocontrollers
+\end{itemize}
+
+Darüber hinaus wird ein Makefile benutzt um den Programmcode zu kompilieren und den Mikrocontroller zu programmieren. Für den AVR-GCC Compiler werden noch spezielle Bibliotheken benötigt, diese können mit folgenden Befehlen installiert werden (Linux-Ubuntu) \cite{online:avrboard}:
+
+\begin{lstlisting}[style=CStyle]
+sudo apt-get install gcc-avr binutils-avr avr-libc
+sudo apt-get install avrdude
+\end{lstlisting}
+
+Die AVR-GCC Toolchain kennt das Layout des Arduino Uno nicht, weswegen der konkrete Mikrocontroller richtig angesprochen werden muss. Im Speziellen ist auf dem Arduino Uno der Atmega328p verbaut. Dieser muss dann im Makefile angegeben werden, sodass der Programmcode für den Mikrocontroller passend kompiliert wird. 
+
+Als Makefile wird eine abgeänderte Version des von Prof. Pretschner bereitgestellte Makefiles verwendet. So muss die MCU Angabe auf 'atmega328p' geändert, und die Angabe des Programmer für den AVRDUDE muss zu 'arduino' verändert werden. Abhängig davon, wie der Controller angeschlossen ist, muss zudem der Port in den AVRDUDE Einstellungen angepasst werden z. B. '/dev/ttyUSB0'.
+

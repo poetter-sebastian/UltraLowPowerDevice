@@ -1,0 +1,197 @@
+\hypertarget{keypad_8c}{}\doxysection{keypad.\+c File Reference}
+\label{keypad_8c}\index{keypad.c@{keypad.c}}
+
+
+This file contains all functions for the key detection.  
+
+
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$avr/io.\+h$>$}\newline
+{\ttfamily \#include $<$util/delay.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}led.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{keypad_8c_a046e45817268585f4dc68bd8e2a988ac}{setup\+\_\+keypad}} (void)
+\begin{DoxyCompactList}\small\item\em Initiates the kepad for use. \end{DoxyCompactList}\item 
+char \mbox{\hyperlink{keypad_8c_a34de776de4177d4b74e62e5b39da30c2}{keypad}} (void)
+\begin{DoxyCompactList}\small\item\em reads the pressed key and returns pressed value \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{keypad_8c_a16611451551e3d15916bae723c3f59f7}{h}} =0
+\begin{DoxyCompactList}\small\item\em Variables used in for loops. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{keypad_8c_ac8859e8c1ce357c4c8b37bbb1936ba1c}{v}} =0
+\begin{DoxyCompactList}\small\item\em Variables used in for loops. \end{DoxyCompactList}\item 
+const int \mbox{\hyperlink{keypad_8c_a157b993c60eb39741c69aeb616a11e70}{rows}} =4
+\begin{DoxyCompactList}\small\item\em Number of rows of keypad. \end{DoxyCompactList}\item 
+const int \mbox{\hyperlink{keypad_8c_ae68a25c0023d8b777603c0f8b05e591a}{columns}} =4
+\begin{DoxyCompactList}\small\item\em Number of columnss of keypad ~\newline
+ \end{DoxyCompactList}\item 
+const char \mbox{\hyperlink{keypad_8c_afb4a64dfd09b621ce09ee8d52ae20a3c}{Output}} \mbox{[}4\mbox{]} =\{PORTD2,PORTD3,PORTD4,PORTD5\}
+\begin{DoxyCompactList}\small\item\em Array of pins used as output for rows of keypad. \end{DoxyCompactList}\item 
+const char \mbox{\hyperlink{keypad_8c_a71cb5720b3a04a3b3e6fb8558ac2afb6}{Input}} \mbox{[}4\mbox{]} =\{PORTD6,PORTD7,PORTB0,PORTB1\}
+\begin{DoxyCompactList}\small\item\em Array of pins used as input for columnss of keypad. \end{DoxyCompactList}\item 
+const char \mbox{\hyperlink{keypad_8c_ad7164b31161fd4d6ff8f21fdd840fb38}{keys}} \mbox{[}4\mbox{]}\mbox{[}4\mbox{]}
+\begin{DoxyCompactList}\small\item\em Array representing the values on the Keypad. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file contains all functions for the key detection. 
+
+\begin{DoxyAuthor}{Author}
+Sebastian Pötter 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+1 Jan 2021
+\end{DoxyDate}
+This file controlles the keyinput and return of the pressed key 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{keypad_8c_a34de776de4177d4b74e62e5b39da30c2}\label{keypad_8c_a34de776de4177d4b74e62e5b39da30c2}} 
+\index{keypad.c@{keypad.c}!keypad@{keypad}}
+\index{keypad@{keypad}!keypad.c@{keypad.c}}
+\doxysubsubsection{\texorpdfstring{keypad()}{keypad()}}
+{\footnotesize\ttfamily char keypad (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+reads the pressed key and returns pressed value 
+
+test if a button is pressed then test which button it is. If colomn Pin changed to Low button is pressed. By setting one row after another to High check if the Low Pin changes to High.
+
+\begin{DoxyReturn}{Returns}
+Char of the pressed button 
+\end{DoxyReturn}
+
+
+Definition at line 78 of file keypad.\+c.
+
+\mbox{\Hypertarget{keypad_8c_a046e45817268585f4dc68bd8e2a988ac}\label{keypad_8c_a046e45817268585f4dc68bd8e2a988ac}} 
+\index{keypad.c@{keypad.c}!setup\_keypad@{setup\_keypad}}
+\index{setup\_keypad@{setup\_keypad}!keypad.c@{keypad.c}}
+\doxysubsubsection{\texorpdfstring{setup\_keypad()}{setup\_keypad()}}
+{\footnotesize\ttfamily void setup\+\_\+keypad (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Initiates the kepad for use. 
+
+Set poin modes for the kepad, rows as Output, colomns as Input and all set to High Set Port 2,3,4,5 as Outpt
+
+Set Port 6,7,8,9 as Input and High
+
+Definition at line 48 of file keypad.\+c.
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{keypad_8c_ae68a25c0023d8b777603c0f8b05e591a}\label{keypad_8c_ae68a25c0023d8b777603c0f8b05e591a}} 
+\index{keypad.c@{keypad.c}!columns@{columns}}
+\index{columns@{columns}!keypad.c@{keypad.c}}
+\doxysubsubsection{\texorpdfstring{columns}{columns}}
+{\footnotesize\ttfamily const int columns =4}
+
+
+
+Number of columnss of keypad ~\newline
+ 
+
+
+
+Definition at line 27 of file keypad.\+c.
+
+\mbox{\Hypertarget{keypad_8c_a16611451551e3d15916bae723c3f59f7}\label{keypad_8c_a16611451551e3d15916bae723c3f59f7}} 
+\index{keypad.c@{keypad.c}!h@{h}}
+\index{h@{h}!keypad.c@{keypad.c}}
+\doxysubsubsection{\texorpdfstring{h}{h}}
+{\footnotesize\ttfamily int h =0}
+
+
+
+Variables used in for loops. 
+
+
+
+Definition at line 20 of file keypad.\+c.
+
+\mbox{\Hypertarget{keypad_8c_a71cb5720b3a04a3b3e6fb8558ac2afb6}\label{keypad_8c_a71cb5720b3a04a3b3e6fb8558ac2afb6}} 
+\index{keypad.c@{keypad.c}!Input@{Input}}
+\index{Input@{Input}!keypad.c@{keypad.c}}
+\doxysubsubsection{\texorpdfstring{Input}{Input}}
+{\footnotesize\ttfamily const char Input\mbox{[}4\mbox{]} =\{PORTD6,PORTD7,PORTB0,PORTB1\}}
+
+
+
+Array of pins used as input for columnss of keypad. 
+
+
+
+Definition at line 31 of file keypad.\+c.
+
+\mbox{\Hypertarget{keypad_8c_ad7164b31161fd4d6ff8f21fdd840fb38}\label{keypad_8c_ad7164b31161fd4d6ff8f21fdd840fb38}} 
+\index{keypad.c@{keypad.c}!keys@{keys}}
+\index{keys@{keys}!keypad.c@{keypad.c}}
+\doxysubsubsection{\texorpdfstring{keys}{keys}}
+{\footnotesize\ttfamily const char keys\mbox{[}4\mbox{]}\mbox{[}4\mbox{]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= \{}
+\DoxyCodeLine{    \{\textcolor{charliteral}{'1'}, \textcolor{charliteral}{'2'}, \textcolor{charliteral}{'3'}, \textcolor{charliteral}{'A'}\},}
+\DoxyCodeLine{    \{\textcolor{charliteral}{'4'}, \textcolor{charliteral}{'5'}, \textcolor{charliteral}{'6'}, \textcolor{charliteral}{'B'}\},}
+\DoxyCodeLine{    \{\textcolor{charliteral}{'7'}, \textcolor{charliteral}{'8'}, \textcolor{charliteral}{'9'}, \textcolor{charliteral}{'C'}\},}
+\DoxyCodeLine{    \{\textcolor{charliteral}{'*'}, \textcolor{charliteral}{'0'}, \textcolor{charliteral}{'\#'}, \textcolor{charliteral}{'D'}\}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Array representing the values on the Keypad. 
+
+
+
+Definition at line 33 of file keypad.\+c.
+
+\mbox{\Hypertarget{keypad_8c_afb4a64dfd09b621ce09ee8d52ae20a3c}\label{keypad_8c_afb4a64dfd09b621ce09ee8d52ae20a3c}} 
+\index{keypad.c@{keypad.c}!Output@{Output}}
+\index{Output@{Output}!keypad.c@{keypad.c}}
+\doxysubsubsection{\texorpdfstring{Output}{Output}}
+{\footnotesize\ttfamily const char Output\mbox{[}4\mbox{]} =\{PORTD2,PORTD3,PORTD4,PORTD5\}}
+
+
+
+Array of pins used as output for rows of keypad. 
+
+
+
+Definition at line 29 of file keypad.\+c.
+
+\mbox{\Hypertarget{keypad_8c_a157b993c60eb39741c69aeb616a11e70}\label{keypad_8c_a157b993c60eb39741c69aeb616a11e70}} 
+\index{keypad.c@{keypad.c}!rows@{rows}}
+\index{rows@{rows}!keypad.c@{keypad.c}}
+\doxysubsubsection{\texorpdfstring{rows}{rows}}
+{\footnotesize\ttfamily const int rows =4}
+
+
+
+Number of rows of keypad. 
+
+
+
+Definition at line 25 of file keypad.\+c.
+
+\mbox{\Hypertarget{keypad_8c_ac8859e8c1ce357c4c8b37bbb1936ba1c}\label{keypad_8c_ac8859e8c1ce357c4c8b37bbb1936ba1c}} 
+\index{keypad.c@{keypad.c}!v@{v}}
+\index{v@{v}!keypad.c@{keypad.c}}
+\doxysubsubsection{\texorpdfstring{v}{v}}
+{\footnotesize\ttfamily int v =0}
+
+
+
+Variables used in for loops. 
+
+
+
+Definition at line 22 of file keypad.\+c.
+

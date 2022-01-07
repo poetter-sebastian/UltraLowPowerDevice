@@ -1,0 +1,80 @@
+Es wird die aktuelleste Version von Eclipse verwendet (Eclipse IDE for C/C++ Developers, Version: 2020-09 (4.17.0) - Build id: 20200910-1200) über den Link: 
+\href{https://www.eclipse.org/downloads/packages/release/2020-09/r/eclipse-ide-cc-developers}{\nolinkurl{www.eclipse.org/downloads}}. Nach der Installation muss ein Workspace eingerichtet werden und danach die Erweiterung für die Arduino-Entwicklung installiert werden.
+
+\begin{figure}[H]
+    \caption{Öffnen des Marktplaces von Eclipse}
+    \centering
+    \includegraphics[width=1\textwidth]{images/install_1.png}
+    \label{fig:marktplace}
+\end{figure}
+
+\begin{figure}[H]
+    \caption{Installation der Bibliothek 'Eclipse C++ IDE for Arduino'}
+    \centering
+    \includegraphics[width=0.9\textwidth]{images/install_2.png}
+    \label{fig:install_arduino}
+\end{figure}
+
+Die Erweiterung 'Eclipse C++ IDE for Arduino' muss über den Marketplace (siehe Abbildung \ref{fig:marktplace}) installiert werden. Wurde die Erweiterung gefunden, kann diese installiert werden (siehe Abbildung \ref{fig:install_arduino}). Es ist möglich, dass diese Erweiterung für zukünftige Versionen nicht funktionieren könnte.
+
+\begin{figure}[H]
+    \caption{Öffnen des Boards-Manager}
+    \centering
+    \includegraphics[width=1\textwidth]{images/install_3.png}
+    \label{fig:boardmanager}
+\end{figure}
+
+Nachdem die Erweiterung installiert wurde, müssen noch die Korrekten Bibliotheken für den Mikrocontroller 'Arduino UNO' installiert werden. Hierfür muss man den Board-Manager öffnen (siehe Abbildung \ref{fig:boardmanager}).
+
+\begin{figure}[H]
+    \caption{Boards-Manager des Arduino Plugins}
+    \centering
+    \includegraphics[width=0.7\textwidth]{images/install_4.png}
+    \label{fig:install_avr}
+\end{figure}
+
+Nun muss auf 'Add' (Hinzufügen) geklickt werden um ein neues Board hinzuzufügen \ref{fig:install_avr}. Um die Bibliothek für Arduino UNO zu installieren muss die Bibliothek 'Arduino AVR Boards' ausgewählt werden. Nachdem auf 'OK' geklickt wurde, wird die Bibliothek heruntergeladen und installiert.
+
+\begin{figure}[H]
+    \caption{Installation der AVR-Boards}
+    \centering
+    \includegraphics[width=0.7\textwidth]{images/install_5.png}
+    \label{fig:avrboards}
+\end{figure}
+
+Nun muss der Compiler eingerichtet werden, sodass auf den ATMega des Arduino UNO cross-compiled werden kann. Hierfür wird ein neues 'Launch Target' hinzugefügt (siehe Abbilung \ref{fig:compiler}). Hierbei öffnet sich ein Fenster zur Auswahl des Zieles, hierbei muss 'Arduino' ausgewählt werden (Abbildung \ref{fig:selectcompiler}).
+
+\begin{figure}[H]
+    \caption{Einrichtung des Compilers}
+    \centering
+    \includegraphics[width=1\textwidth]{images/install_6.png}
+    \label{fig:compiler}
+\end{figure}
+
+\begin{figure}[H]
+    \caption{Auswahlfenster des Compilers}
+    \centering
+    \includegraphics[width=0.6\textwidth]{images/install_7.png}
+    \label{fig:selectcompiler}
+\end{figure}
+
+Nun muss ein Name vergeben werden sowie der USB Port über welches der Mikrocontroller angeschlossen ist. Beim 'Board type' muss 'Arduino UNO' ausgewählt sein und der 'Programmer' muss der 'AVR ISP' sein (siehe Abbildung \ref{fig:settingcompiler}).
+
+\begin{figure}[H]
+    \caption{Einstellung des Compilers}
+    \centering
+    \includegraphics[width=0.6\textwidth]{images/install_8.png}
+    \label{fig:settingcompiler}
+\end{figure}
+
+Quellcode kann nun kompiliert und ausgeführt werden. Dabei wird der Quellcode erst für den ATMega kompiliert und danach auf den Mikrocontroller übertragen. Über die Serielle Verbindung können auch Daten übertragen werden, welche auf der Konsole angezeigt werden.
+
+\begin{figure}[H]
+    \caption{Kompilieren und Hochladen auf den Arduino UNO}
+    \centering
+    \includegraphics[width=1\textwidth]{images/install_9.png}
+    \label{fig:settheory}
+\end{figure}
+
+\vfill
+\clearpage
